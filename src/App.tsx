@@ -43,10 +43,12 @@ export function App() {
         };
     }, []);
 
-    return (<>
-        <HelmetProvider context={{}}>
-            <RouterProvider router={router} />
-            <CookiesPopup />
-        </HelmetProvider>
-    </>);
+    return (
+        <div className="min-h-screen flex flex-col justify-between">
+            <HelmetProvider context={{}}>
+                <RouterProvider router={router} />
+                <CookiesPopup />
+            </HelmetProvider>
+        </div>
+    );
 }
