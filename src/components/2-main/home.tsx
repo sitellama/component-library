@@ -1,18 +1,14 @@
 import { SEO } from "../../utils/seo";
 import { HeroBanner } from "../4-library/herobanner";
-import PriceSection from "../4-library/pricing-section";
-import { PortfolioFeatured } from "../4-library/portfolio-featured";
-import { ContactForm } from "../4-library/contact-form";
-import mascot from "../../assets/llama_mascot-form.webp";
-import recentWork from "../../assets/recent-work.webp";
-import s6Horses from "../../assets/portfolio1.webp";
-import kcrafts from "../../assets/portfolio2.webp";
-import bsf from "../../assets/portfolio3.webp";
-import Growth from "../4-library/growth";
-import Intro from "../4-library/intro";
-import { LlamaTechnology } from "../4-library/llama-technology";
-import Carousel from "../4-library/carousel";
 import Components from "@/ui/components";
+import { Reviews, reviewsMobile, reviewsDesktop } from "../4-library/reviews";
+import { ReviewsTest } from "../4-library/reviews/reviews-test";
+
+const handleCreateFile = async () => {
+  const res = await fetch('http://localhost:3001/api/create-reviews', { method: 'POST' });
+  const data = await res.json();
+  alert(data.message || data.error);
+};
 
 export function Home() {
     return (
@@ -21,7 +17,15 @@ export function Home() {
 
             <HeroBanner />
 
+            <button onClick={handleCreateFile}>Create Reviews File</button>
+            <ReviewsTest />
+            <Reviews />
+
+            <img src={reviewsMobile} alt="Reviews Mobile" />
+            <img src={reviewsDesktop} alt="Reviews Desktop" />
+
             <Components />
+
         </>
     );
 }
